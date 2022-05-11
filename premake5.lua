@@ -40,5 +40,17 @@ project "GLFW"
             "_GLFW_WIN32",
             "_CRT_SECURE_NO_WARNINGS"
 		}
-    filter { "system:windows", "configurations:Release" }
-        buildoptions "/MT"
+
+    filter "configurations:Debug"
+		defines "OK_DEBUG"
+        runtime "Debug"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "OK_RELEASE"
+        runtime "Release"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "OK_DIST"
+		optimize "On"
